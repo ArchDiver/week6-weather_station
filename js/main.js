@@ -40,56 +40,106 @@ function getTempK(){
     let zip = document.querySelector("#zip").value;
     let country = document.querySelector("#country").value;
     console.log(key,city,state,country,zip)
+    console.log(zip)
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country},us&appid=${key}`)
-    .then(response => response.json())
-    .then(rawdata =>{
+    if(zip == ''){
+        console.log("if")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+            locID = document.querySelector('#locID');
+            let webID = rawdata.id;
+            locID.innerHTML = webID
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }else{
+        console.log("else")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},${country}&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }
 
-        // Local
-        let locCity = document.querySelector('#locCity');
-        let webcity = rawdata.name;
-        locCity.innerHTML = webcity;
-
-
-        let locState = document.querySelector('#locState');
-        locState.innerHTML = state;
-
-        let locZip = document.querySelector('#locZip');
-        locZip.innerHTML = zip;
-
-        let locCountry = document.querySelector('#locCountry');
-        let webcountry = rawdata.sys.country;
-        locCountry.innerHTML = webcountry;
-
-        locID = document.querySelector('#locID');
-        let webID = rawdata.id;
-        locID.innerHTML = webID
-
-
-        // High
-        let high = document.querySelector('#high');
-        let web_high = rawdata.main.temp_max;
-        high.innerHTML = web_high + " K\xB0";
-
-        // Low
-        let low = document.querySelector('#low');
-        let web_low = rawdata.main.temp_min;
-        low.innerHTML = web_low + " K\xB0";
-
-        // Forcast
-        let forcast = document.querySelector('#forcast');
-        let webforecast_Main = rawdata.weather[0].main;
-        let webforcast_Description = rawdata.weather[0].description;
-        forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
-
-        // Humidity
-        let humidity = document.querySelector('#humid');
-        let web_humidity = rawdata.main.humidity;
-        humidity.innerHTML = web_humidity  + "%" 
-        console.log(webID)
-        return webID = rawdata.id;
-
-    });
 };
 
 function getTempC(){
@@ -99,55 +149,103 @@ function getTempC(){
     let country = document.querySelector("#country").value;
     console.log(key,city,state,country,zip)
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country},us&units=metric&appid=${key}`)
-    .then(response => response.json())
-    .then(rawdata =>{
-
-        // Local
-        let locCity = document.querySelector('#locCity');
-        let webcity = rawdata.name;
-        locCity.innerHTML = webcity;
-
-
-        let locState = document.querySelector('#locState');
-        locState.innerHTML = state;
-
-        let locZip = document.querySelector('#locZip');
-        locZip.innerHTML = zip;
-
-        let locCountry = document.querySelector('#locCountry');
-        let webcountry = rawdata.sys.country;
-        locCountry.innerHTML = webcountry;
-
-        locID = document.querySelector('#locID');
-        let webID = rawdata.id;
-        locID.innerHTML = webID
-
-
-        // High
-        let high = document.querySelector('#high');
-        let web_high = rawdata.main.temp_max;
-        high.innerHTML = web_high + " C\xB0";
-
-        // Low
-        let low = document.querySelector('#low');
-        let web_low = rawdata.main.temp_min;
-        low.innerHTML = web_low + " C\xB0";
-
-        // Forcast
-        let forcast = document.querySelector('#forcast');
-        let webforecast_Main = rawdata.weather[0].main;
-        let webforcast_Description = rawdata.weather[0].description;
-        forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
-
-        // Humidity
-        let humidity = document.querySelector('#humid');
-        let web_humidity = rawdata.main.humidity;
-        humidity.innerHTML = web_humidity  + "%" 
-        console.log(webID)
-        return webID = rawdata.id;
-
-    });
+    if(zip == ''){
+        console.log("if")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&units=metric&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+            locID = document.querySelector('#locID');
+            let webID = rawdata.id;
+            locID.innerHTML = webID
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }else{
+        console.log("else")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},${country}&units=metric&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }
 };
 
 function getTempF(){
@@ -157,53 +255,101 @@ function getTempF(){
     let country = document.querySelector("#country").value;
     console.log(key,city,state,country,zip)
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country},us&units=imperial&appid=${key}`)
-    .then(response => response.json())
-    .then(rawdata =>{
-
-        // Local
-        let locCity = document.querySelector('#locCity');
-        let webcity = rawdata.name;
-        locCity.innerHTML = webcity;
-
-
-        let locState = document.querySelector('#locState');
-        locState.innerHTML = state;
-
-        let locZip = document.querySelector('#locZip');
-        locZip.innerHTML = zip;
-
-        let locCountry = document.querySelector('#locCountry');
-        let webcountry = rawdata.sys.country;
-        locCountry.innerHTML = webcountry;
-
-        locID = document.querySelector('#locID');
-        let webID = rawdata.id;
-        locID.innerHTML = webID
-
-
-        // High
-        let high = document.querySelector('#high');
-        let web_high = rawdata.main.temp_max;
-        high.innerHTML = web_high + " F\xB0";
-
-        // Low
-        let low = document.querySelector('#low');
-        let web_low = rawdata.main.temp_min;
-        low.innerHTML = web_low + " F\xB0";
-
-        // Forcast
-        let forcast = document.querySelector('#forcast');
-        let webforecast_Main = rawdata.weather[0].main;
-        let webforcast_Description = rawdata.weather[0].description;
-        forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
-
-        // Humidity
-        let humidity = document.querySelector('#humid');
-        let web_humidity = rawdata.main.humidity;
-        humidity.innerHTML = web_humidity  + "%" 
-        console.log(webID)
-        return webID = rawdata.id;
-
-    });
+    if(zip == ''){
+        console.log("if")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${state},${country}&units=imperial&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+            locID = document.querySelector('#locID');
+            let webID = rawdata.id;
+            locID.innerHTML = webID
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }else{
+        console.log("else")
+        fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip},${country}&units=imperial&appid=${key}`)
+        .then(response => response.json())
+        .then(rawdata =>{
+    
+            // Local
+            let locCity = document.querySelector('#locCity');
+            let webcity = rawdata.name;
+            locCity.innerHTML = webcity;
+    
+    
+            let locState = document.querySelector('#locState');
+            locState.innerHTML = state;
+    
+            let locZip = document.querySelector('#locZip');
+            locZip.innerHTML = zip;
+    
+            let locCountry = document.querySelector('#locCountry');
+            let webcountry = rawdata.sys.country;
+            locCountry.innerHTML = webcountry;
+    
+    
+            // High
+            let high = document.querySelector('#high');
+            let web_high = rawdata.main.temp_max;
+            high.innerHTML = web_high + " K\xB0";
+    
+            // Low
+            let low = document.querySelector('#low');
+            let web_low = rawdata.main.temp_min;
+            low.innerHTML = web_low + " K\xB0";
+    
+            // Forcast
+            let forcast = document.querySelector('#forcast');
+            let webforecast_Main = rawdata.weather[0].main;
+            let webforcast_Description = rawdata.weather[0].description;
+            forcast.innerHTML = webforecast_Main  + ", \n" + webforcast_Description;
+    
+            // Humidity
+            let humidity = document.querySelector('#humid');
+            let web_humidity = rawdata.main.humidity;
+            humidity.innerHTML = web_humidity  + "%" 
+            console.log(webID)
+            return webID = rawdata.id;    
+        });
+    }
 };

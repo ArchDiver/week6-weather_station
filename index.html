@@ -45,7 +45,7 @@
           </div>
         </nav>
     </header>
-
+<!--  -->
     <div class="box">
         <div class="weather">
             <h1>Weather</h1>
@@ -56,14 +56,15 @@
                             <label for="city">City</label>
                             <input class="city" type="text" name="city" id="city" placeholder="City">
                             <label for="state">State</label>
-                            <input class="state" type="text" name="state" id="state" placeholder="State (US only)">
+                            <input class="state" type="text" name="state" id="state" size="2" maxlength="2" style="text-transform:uppercase" placeholder="(US only)">
                             <Label for="country">Country</Label>
-                            <input class="country" type="text" name="country" id="country" size="2" maxlength="2" value="US" placeholder="e.g. US, JP" style="text-transform:uppercase">
+                            <input class="country" type="text" name="country" id="country" size="2" maxlength="2" placeholder="e.g. US, JP" >
                             <Label for="zip">Zip Code</Label>
                             <input class="zip" type="text" name="zip" id="zip" placeholder="Zip Code">
                             <button type="button" class="search-btn" onclick="getTempC()" id="weathersearch"> Weather C&deg</button>
                             <button type="button" class="search-btn" onclick="getTempF()" id="weathersearch"> Weather F&deg</button>
                             <button type="button" class="search-btn" onclick="getTempK()" id="weathersearch"> Weather K&deg</button>
+                            <input type="button" value="Clear" onClick="this.form.reset()" />
                         </div>
                     </form>
             </div>
