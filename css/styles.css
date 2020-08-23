@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 100%;
     padding-left: 1.4rem;
     padding-right: 1.4rem;
     margin-left: auto;
@@ -211,13 +211,13 @@ body {
     background-image: linear-gradient(to right bottom, rgba(30,115,172,0.7), rgba(142,57,153,0.6)),url(../images/photo-1494548162494-384bba4ab999.jfif);
     background-size: cover;
     justify-content: center;
-    width: 50%;
+    width: 80%;
     text-align: center;
 
     color: rgb(255, 255, 255);
     background-color: rgb(184, 184, 209);
     text-align: center;
-    margin: 5% 25%;
+    margin: 5% 10%;
     border: 5px solid rgb(233, 179, 255);
 
 }
@@ -227,7 +227,7 @@ body {
     justify-content: center;
     align-content: center;
     border: 0;
-    line-height: 2.5;
+    line-height: 2;
     padding: 0 20px;
     font-size: 1.5rem;
     text-align: center;
@@ -247,25 +247,25 @@ input.city {
     border: #000;
     /* padding: 10px; */
     font-size: 1.2em;
-    width: 38%;
+    width:78%;
 }
 input.state {
     border: #000;
     /* padding: 10px; */
     font-size: 1.2em;
-    width: 30%;
+    width:50%;
 }
 input.zip {
     border: #000;
     /* padding: 10px; */
     font-size: 1.2em;
-    width: 30%;
+    width:50%;
 }
 input.country {
     border: #000;
     /* padding: 10px; */
     font-size: 1.2em;
-    width: 25%;
+    width:50%;
 }
 
 input::placeholder {
@@ -292,6 +292,10 @@ input::placeholder {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
+form{
+    justify-content: center;
+    margin: 2% auto;
+}
 
 .search-btn:hover {
     background-color: rgba(255, 0, 0, 1);
@@ -302,19 +306,20 @@ input::placeholder {
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 /* ------------------------------ */
-table, th, td, tr {
+table, tbody, th, td, tr {
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(255, 255, 255);
     background-color: rgba(247, 0, 255, 0.212);
     text-align: center;
-    margin: 5% 30%;
+    justify-content: center;
+    margin: 2% auto;
     border: 5px solid rgb(233, 179, 255);
     border-radius: 5%;
-    width: 2rem;
+    width: 10rem;
     max-width: 100%;
-    padding: 0 20px;
+    padding: 0;
     font-size: 1.5rem;
-    text-align: center;
+    justify-self: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
     background-image: linear-gradient(to top left,
