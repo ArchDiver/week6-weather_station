@@ -53,18 +53,27 @@
                 <Label for="search" id="searchlabel">Enter as Much as You Can</Label>
                     <form action="" class="weather-search" name="weatherForm" id="weatherFrom">
                         <div class="city">
-                            <label for="city">City</label>
-                            <input class="city" type="text" name="city" id="city" placeholder="City"> <br>
-                            <label for="state">State</label>
-                            <input class="state" type="text" name="state" id="state" size="2" maxlength="2" style="text-transform:uppercase" placeholder="(US only)"> <br>
-                            <Label for="country">Country</Label>
-                            <input class="country" type="text" name="country" id="country" size="2" maxlength="2" placeholder="e.g. US, JP" > <br>
-                            <Label for="zip">Zip Code</Label>
-                            <input class="zip" type="text" name="zip" id="zip" placeholder="Zip Code"><br>
-                            <button type="button" class="search-btn" onclick="getTempC()" id="weathersearch"> Weather C&deg</button>
-                            <button type="button" class="search-btn" onclick="getTempF()" id="weathersearch"> Weather F&deg</button>
-                            <button type="button" class="search-btn" onclick="getTempK()" id="weathersearch"> Weather K&deg</button><br>
-                            <input type="button" value="Clear" onClick="this.form.reset()" />
+                            <div class="form-inputs">
+                                <label for="city">City</label>
+                                <input class="city" type="text" name="city" id="city" placeholder="City"> <br>
+                                <label for="state">State</label>
+                                <input class="state" type="text" name="state" id="state" size="2" maxlength="2" style="text-transform:uppercase" placeholder="(US only)"> <br>
+                                <Label for="country">Country</Label>
+                                <input class="country" type="text" name="country" id="country" size="2" maxlength="2" style=text-transform:uppercase placeholder="e.g. US,JP" > <br>
+                                <Label for="zip">Zip Code</Label>
+                                <input class="zip" type="text" name="zip" id="zip" placeholder="Zip Code"><br>
+                            </div>
+                            <div class="btn">
+                                <!-- <button type="button" class="search-btn" onclick="getTempC()" id="weathersearch"> Weather C&deg</button>
+                                <button type="button" class="search-btn" onclick="getTempF()" id="weathersearch"> Weather F&deg</button>
+                                <button type="button" class="search-btn" onclick="getTempK()" id="weathersearch"> Weather K&deg</button><br>
+                                <input type="button" value="Clear" onClick="this.form.reset()" /> -->
+
+                                <button type="button" class="search-btn" onclick="getWeather('C')" id="weathersearch"> Weather C&deg</button>
+                                <button type="button" class="search-btn" onclick="getWeather('F')" id="weathersearch"> Weather F&deg</button>
+                                <button type="button" class="search-btn" onclick="getWeather('K')" id="weathersearch"> Weather K&deg</button><br>
+                                <input type="button" value="Clear" onClick="this.form.reset()" />
+                            </div>
                         </div>
                     </form>
             </div>
@@ -82,21 +91,33 @@
                     </table>
                 </fieldset>
                 <fieldset>
+                    <label for="currentTemp">Current Temperature</label>
+                    <h3 id="currentTemp"></h3>                    
+                    <label for=feelsTemp>Feels Like</label>
+                    <h3 id="feelsTemp"></h3>
+                </fieldset>
+                 <fieldset>
                     <label for="high">High</label>
                     <h3 id="high"></h3>                    
-                </fieldset>
-                <fieldset>
                     <label for="low">Low</label>
                     <h3 id="low"></h3>
                 </fieldset>
                 <fieldset>
-                    <label for="forcast">Forcast</label>
-                    <h3 id="forcast" ></h3>
-                    
+                    <label for="forecast">Forecast</label>
+                    <h3 id="forecast" ></h3>                    
                 </fieldset>
                 <fieldset>
+                    <label for="ATM">Atmospheric Pressure</label>
+                    <h3 id="ATM"></h3>                    
                     <label for="humid">Humidity</label>
                     <h3 id="humid"></h3>
+                    <label for="wind">Wind Speed</label>
+                    <h3 id="wind"></h3>                    
+                </fieldset>
+                <fieldset>
+                    <label for="sun">Sunrise and Sunset</label>
+                    <h3 id="sunrise"></h3>
+                    <h3 id="sunset" ></h3>                    
                 </fieldset>
             </div>
         </div>
